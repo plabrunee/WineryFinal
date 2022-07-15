@@ -19,6 +19,7 @@ public class LibreriaDAO {
     private static final String SQL_READ = "SELECT id, marca, tipo, anio, stock, precio FROM productos;";
     private static final String SQL_UPDATE_PRECIO = "UPDATE productos SET precio = ? WHERE id = ?;";
     private static final String SQL_UPDATE_STOCK = "UPDATE productos SET stock = ? WHERE id = ?;";
+    private static final String SQL_UPDATE = "UPDATE productos SET marca = ?, tipo = ?, anio = ?, stock = ?, precio = ? WHERE id = ?;";
     private static final String SQL_DELETE = "DELETE FROM productos WHERE id = ?;";
     private static final String SQL_SELECT_BY_ID = "SELECT id, marca, tipo, anio, stock, precio FROM productos WHERE id = ?;";
     private static final String SQL_SELECT_BY_MARCA = "SELECT id, marca, tipo, anio, stock, precio FROM productos WHERE marca = ?;";
@@ -217,7 +218,44 @@ public class LibreriaDAO {
         
     }
     
-    public int delete (Productos producto) {
+    public int update (Productos producto) {
+        
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        
+        try {
+            
+            conn = getConexion();
+            stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt.setString(1, producto.getMarca());
+            stmt.setString(2, producto.getTipo());
+            stmt.setInt(3, producto.getAnio());
+            stmt.setInt(4, producto.getStock());
+            stmt.setDouble(5, producto.getPrecio());
+            stmt.setInt(6, producto.getId());
+            
+            registros = stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace(System.out);
+        }
+        
+        finally{
+            try {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return registros;
+        
+    }
+    
+    public int delete (int id) {
         
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -227,7 +265,7 @@ public class LibreriaDAO {
             
             conn = getConexion();
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, producto.getId());
+            stmt.setInt(1, id);
             
             registros = stmt.executeUpdate();
             

@@ -20,7 +20,7 @@
 
         <jsp:include page="/WEB-INF/paginas/comunes/cabecera.jsp"></jsp:include>
         
-        <form action =" ${pageContext.request.contextPath}/ServletControlador?accion=editar&id=${productoMod.id}"
+        <form action ="${pageContext.request.contextPath}/ServletControlador?accion=modificar&id=${productoMod.id}"
               method="POST" class="was-validated">
                 <jsp:include page="/WEB-INF/paginas/comunes/editarNav.jsp"></jsp:include>
                 

@@ -28,6 +28,7 @@ public class ServletControlador extends HttpServlet {
                     editarProducto(req, res);
                     break;
                 case "eliminar":
+                    eliminarProducto(req, res);
                     break;
                 default:
                     accionDefault(req, res);
@@ -61,8 +62,8 @@ public class ServletControlador extends HttpServlet {
                     }
                 }
                     break;
-                case "editar":
-                    editarProducto(req, res);
+                case "modificar":
+                    modificarProducto(req, res);
                     break;
                 default:
                     accionDefault( req, res);
@@ -160,9 +161,35 @@ public class ServletControlador extends HttpServlet {
         
     }
     
-    private void modificarProducto(HttpServletRequest req, HttpServletResponse res) {
+    private void modificarProducto(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        
+        String marca = req.getParameter("marca");
+        String tipo = req.getParameter("tipo");
+        int anio = Integer.parseInt(req.getParameter("anio"));
+        int stock = Integer.parseInt(req.getParameter("stock"));
+        double precio = Double.parseDouble(req.getParameter("precio"));
+        
+        int id = Integer.parseInt(req.getParameter("id"));
+        
+        Productos producto = new Productos( id, marca, tipo, anio, stock, precio);
+        
+        int regMod = new LibreriaDAO().update(producto);
+        System.out.println("Insertados: "+ regMod + " producto/s.");
+        
+        accionDefault( req, res);
         
     }
-            
+     
+    
+    private void eliminarProducto(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        
+        int id = Integer.parseInt(req.getParameter("id"));
+         
+        int regBor = new LibreriaDAO().delete(id);
+        System.out.println("Insertados: "+ regBor + " producto/s.");
+         
+        accionDefault( req, res);
+        
+    }
     
 }

@@ -14,7 +14,7 @@
                 </button>
             </div>
             <div class="col-md-4">
-                <a href="${pageContext.request.contextPath}/ServletControlador?accion=eliminar&id=${producto.id}" class="btn btn-block"></a>
+                <a href="${pageContext.request.contextPath}/ServletControlador?accion=eliminar&id=${productoMod.id}" class="btn btn-warning btn-block">
                     <i class="fas fa-trash"></i>
                     Eliminar producto
                 </a>
