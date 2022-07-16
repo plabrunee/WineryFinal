@@ -1,0 +1,5 @@
+Martín, la base de datos está dos veces.
+En WineryFinal_db_20220715.sql están las dos tablas juntas.
+Después están por separado también.
+
+Saludos!
