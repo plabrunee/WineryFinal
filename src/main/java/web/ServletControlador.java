@@ -2,7 +2,7 @@
 package web;
 
 import datos.LibreriaDAO;
-import entidades.Productos;
+import entidades.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -156,6 +156,18 @@ public class ServletControlador extends HttpServlet {
         //Productos prod = (Productos) new LibreriaDAO().findById(id);
         Productos prod = new LibreriaDAO().findById(id);
         req.setAttribute("productoMod", prod);
+        
+//        
+//        List<Tipos> tipos = new LibreriaDAO().listarTipos();
+//        req.setAttribute("tipos", tipos);
+////        
+////        for( Tipos listatipo :tipos) {
+////            System.out.println(listatipo.getId());
+////        }
+//        for (int i = 0; i < tipos.size(); i++) {
+//            System.out.println(tipos.get(i).toString());
+//        }
+//        
         
         req.getRequestDispatcher("/WEB-INF/paginas/operaciones/editarProducto.jsp").forward(req, res);
         

@@ -1,4 +1,3 @@
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:setLocale value="es_AR"/>
@@ -36,7 +35,6 @@
                                         <td class="text-end">${producto.stock}</td>
                                         <td class="text-end"><fmt:formatNumber value="${producto.precio}" type="currency"/></td>
                                         
-                                        <!--Completar href cuando esté terminado JSP EDITAR -->
                                         <td class="text-center">
                                             <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&id=${producto.id}" class="btn btn-secondary">
                                                 <i class="fas fa-angle-double-right"></i>
@@ -75,4 +73,4 @@
     </div>
 </section>
 
-<jsp:include page="/WEB-INF/paginas/operaciones/agregarProductos.jsp" />
+<%--<jsp:include page="/WEB-INF/paginas/operaciones/agregarProductos.jsp" />--%>

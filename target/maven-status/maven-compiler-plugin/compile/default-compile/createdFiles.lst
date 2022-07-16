@@ -1,4 +1,6 @@
-datos\Conexion.class
-entidades\Productos.class
+entidades\Tipos.class
 web\ServletControlador.class
 datos\LibreriaDAO.class
+web\ServletTipos.class
+datos\Conexion.class
+entidades\Productos.class

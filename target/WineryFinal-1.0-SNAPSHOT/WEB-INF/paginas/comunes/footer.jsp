@@ -1,4 +1,4 @@
-<footer id="pie-pagina" class="bg-warning text-white mt-5 p-5 fixed-bottom">
+<footer id="pie-pagina" class="footer bg-warning text-white mt-auto py-4 sticky-bottom">
     <div class="container">
         <div class="col">
             <p class="lead text-center">

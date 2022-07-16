@@ -5,7 +5,7 @@
 package datos;
 
 import static datos.Conexion.*;
-import entidades.Productos;
+import entidades.*;
 import java.sql.*;
 import java.util.*;
 
@@ -23,6 +23,7 @@ public class LibreriaDAO {
     private static final String SQL_DELETE = "DELETE FROM productos WHERE id = ?;";
     private static final String SQL_SELECT_BY_ID = "SELECT id, marca, tipo, anio, stock, precio FROM productos WHERE id = ?;";
     private static final String SQL_SELECT_BY_MARCA = "SELECT id, marca, tipo, anio, stock, precio FROM productos WHERE marca = ?;";
+    private static final String SQL_SELECT_TIPOS = "SELECT id, descripcion FROM tipodeproducto;";
     
     
     public List<Productos> findAll() {
@@ -30,8 +31,9 @@ public class LibreriaDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Productos producto = null;
-        List<Productos> productos = new ArrayList();
+        Productos producto;
+        List<Productos> productos;
+        productos = new ArrayList();
         
         try {
             
@@ -185,7 +187,7 @@ public class LibreriaDAO {
         
     }
     
-    public int updateCopias (Productos producto) {
+    public int updateStock (Productos producto) {
         
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -286,6 +288,48 @@ public class LibreriaDAO {
         }
         
         return registros;
+        
+    }
+    
+    
+    public List<Tipos> listarTipos() {
+        
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Tipos tipo;
+        List<Tipos> tipos;
+        tipos = new ArrayList();
+        
+        try {
+            
+            conn = getConexion();
+            stmt = conn.prepareStatement(SQL_SELECT_TIPOS);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                
+                int id = rs.getInt("id");
+                String descripcion = rs.getString("descripcion");
+                
+                tipo = new Tipos( id, descripcion);
+                
+                tipos.add(tipo);
+                
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                close(rs);
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return tipos;
         
     }
 }

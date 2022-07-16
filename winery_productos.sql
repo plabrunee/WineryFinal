@@ -31,7 +31,7 @@ CREATE TABLE `productos` (
   `precio` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `marca_tipo_anio` (`marca`,`tipo`,`anio`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Toro','Vino Tinto',2021,10,120.4),(2,'Termidor','Vino Blanco',2022,123,180),(3,'Colón','Vino Tinto Malbec',2018,24,380.85),(4,'Old Smuggler','Whiskey',2005,34,1230),(6,'La vinotinto','Vino Blanco',2021,3,105.25),(7,'El vinacho','Cualquier vino',2022,15,58),(8,'Güisquito','Whiskey',2003,2,2560),(9,'Toro Viejo','Vino Rosad',2022,20,140.5);
+INSERT INTO `productos` VALUES (1,'Toro','Vino Tinto',2021,11,120.4),(2,'Termidor','Vino Blanco',2022,123,180),(3,'Colón','Vino Tinto Malbec',2018,24,380.85),(4,'Old Smuggler','Whisky',2005,34,1230),(6,'La vinotinto','Vino Blanco',2021,3,105.25),(8,'Güisquito','Whisky',2003,2,2560),(9,'Toro Viejo','Vino Rosado',2022,20,140.5),(10,'La Bodeguita','Espumante',2001,5,350),(11,'El Tonel','Vino Blanco Reserva',2019,10,480),(12,'El Tonel','Vino Tinto Reserva',2020,10,520),(13,'Otro loco más','Vino Tinto Fino',2010,5,850);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-14 15:16:06
+-- Dump completed on 2022-07-15 15:59:32
